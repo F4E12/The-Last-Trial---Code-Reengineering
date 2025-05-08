@@ -1,11 +1,24 @@
 package id.ac.binus.solution.controllers;
 
+import game.controllers.RigidBodyController;
 import game.core.constants.Vector;
 import game.core.models.Vector2D;
 import game.core.physics.RigidBody;
 
+/*
+ * Smell Code : Primitive Obsession
+ * Reason     : Using integer to store direction
+ * Treatment  : Extract variable to enum
+ */
+
+/*
+ * Smell Code : Comment
+ * Reason     : Existed comment in void update to explain the method
+ * Treatment  : Remove comment
+ */
+
 public class NPCMovementController extends RigidBodyController {
-  private int direction;
+  private Vector direction;
 
   public NPCMovementController(RigidBody rb) {
     super(rb);
@@ -13,8 +26,7 @@ public class NPCMovementController extends RigidBodyController {
   }
 
   @Override
-  public void update(Vector2D pos) {   
-    // state controlled behaviour
+  public void update(Vector2D pos) {
     rb.update(pos);
   }
 
@@ -29,7 +41,7 @@ public class NPCMovementController extends RigidBodyController {
   }
   
   @Override
-  public int getDirection() {
+  public Vector getDirection() {
     return this.direction;
   }
   

@@ -3,43 +3,60 @@ package id.ac.binus.solution.controllers;
 import java.util.Random;
 
 import game.camera.PaneObserver;
-import game.core.constants.Vector;
 import game.core.interfaces.CharacterContext;
 import game.managers.GameManager;
 
+/*
+ * Smell Code : Long Method
+ * Reason     : The method contains a lot of logic for attacking
+ * Treatment  : Extract Method
+ */
+
+/*
+ * Smell Code : Primitive Obsession
+ * Reason     : Target id (player or enemy) is hard-coded as an integer
+ * Treatment  : Make a constant variable
+ */
+
+/*
+ * Smell Code : Duplicate Code
+ * Reason     : The code getting the X dan Y coordinates is duplicated
+ * Treatment  : Extract Method
+ */
+
 public class AttackHandler {
+    private static final int PLAYER_ID = 0;
+	private static final int ENEMY_ID = 1;
+
 	private static GameManager gm = GameManager.getInstance();
 	private static Random rand = new Random();
 
 	public static boolean attack(int attackerId, int targetId, int damage) {
-		CharacterContext target = gm.getContext(targetId);
 		CharacterContext attacker = gm.getContext(attackerId);
+		CharacterContext target = gm.getContext(targetId);
 
-		double targetBottomLeftX = target.getPos().getX() + target.getHitbox()[0].getX();
-		double targetBottomLeftY = target.getPos().getY() + target.getHitbox()[0].getY();
-		double targetTopRightX = target.getPos().getX() + target.getHitbox()[1].getX();
-		double targetTopRightY = target.getPos().getY() + target.getHitbox()[1].getY();
-
-		double attackerBottomLeftX = attacker.getPos().getX() + attacker.getHitbox()[0].getX();
-		double attackerBottomLeftY = attacker.getPos().getY() + attacker.getHitbox()[0].getY();
-		double attackerTopRightX = attacker.getPos().getX() + attacker.getHitbox()[1].getX();
-		double attackerTopRightY = attacker.getPos().getY() + attacker.getHitbox()[1].getY();
-
-		boolean attacked = (attackerBottomLeftX < targetTopRightX) && (attackerTopRightX > targetBottomLeftX)
-				&& (attackerBottomLeftY < targetTopRightY) && (attackerTopRightY > targetBottomLeftY);
-
-		if (attacked && !target.isInvincible()) {
-			gm.playGameSound(rand.nextInt(3));
-			target.updateHealth(-damage);
-
-			if (targetId == 1) {
-				PaneObserver.getInstance().notifyEnemyListeners();
-			} else if (targetId == 0) {
-				target.addForce(60 * (attacker.getDirection()), Vector.X);
-				PaneObserver.getInstance().notifyPlayerListeners();
-			}
+		if (isHit(attacker, target) && !target.isInvincible()) {
+			applyAttackEffects(attacker, target, targetId, damage);
+			return true;
 		}
+		return false;
+	}
 
-		return attacked;
+	private static boolean isHit(CharacterContext attacker, CharacterContext target) {
+		BoundingBox attackerBox = new BoundingBox(attacker);
+		BoundingBox targetBox = new BoundingBox(target);
+		return attackerBox.intersects(targetBox);
+	}
+
+	private static void applyAttackEffects(CharacterContext attacker, CharacterContext target, int targetId, int damage) {
+		gm.playGameSound(rand.nextInt(3));
+		target.updateHealth(-damage);
+
+		if (targetId == ENEMY_ID) {
+			PaneObserver.getInstance().notifyEnemyListeners();
+		} else if (targetId == PLAYER_ID) {
+			target.addForce(60 * attacker.getDirection(), game.core.constants.Vector.X);
+			PaneObserver.getInstance().notifyPlayerListeners();
+		}
 	}
 }
