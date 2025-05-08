@@ -2,6 +2,11 @@ package game.core.physics;
 
 import game.core.models.Vector2D;
 
+/*
+    Smell Code  : Dead Code and Speculative Generality
+    Reason      : Variable marginError is not used for now
+    Treatment   : Remove variable marginError
+*/
 
 public class PhysicsEngine {
     private static final Vector2D leftBoundary = new Vector2D(240, 800);
