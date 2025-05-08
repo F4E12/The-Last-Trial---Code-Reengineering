@@ -16,6 +16,12 @@ import game.core.models.Vector2D;
 import game.core.states.boss.BossState;
 import javafx.scene.input.KeyCode;
 
+/*
+	Smell Code	: Speculative Generality
+	Reason		: Start method from FXBehaviour is not implemented here
+	Treatment	: Create a separate interface for FXBehavoiur
+*/
+
 public class PlayerManager implements CharacterContext, FXBehaviour {
 	private final Player player;
 	private int stateCache = 1;
