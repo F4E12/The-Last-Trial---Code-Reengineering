@@ -15,6 +15,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+/*
+ * Smell Code : Large Class
+ * Reason     : Class is too long and has too many methods
+ * Solution   : Extract class
+ * 
+ * Smell Code : Comments
+ * Reason     : Contains many comments
+ * Solution   : Delete comments
+ * 
+ * Smell Code : Dead Code
+ * Reason     : Constructor private PaneObserver(){} is not used
+ * Solution   : Delete dead code
+ * 
+ * Smell Code : Speculative Generality
+ * Reason     : The method removePlayerListener and removeEnemyListener is declared but hasn't been implemented yet
+ * Solution   : Delete unused method
+ */
+
 public class PaneObserver {
 	private static PaneObserver instance;
 	private final List<ImageView> FXListeners = new ArrayList<>();
@@ -98,7 +116,7 @@ public class PaneObserver {
 		FadeTransition fadeOut = new FadeTransition(Duration.millis(3000), overlay);
 		fadeOut.setFromValue(0.8); // Start from fully visible
 		fadeOut.setToValue(0.0); // End fully transparent
-//		fadeOut.setDelay(Duration.seconds(0.1)); // Small delay for continuous hits
+		// fadeOut.setDelay(Duration.seconds(0.1)); // Small delay for continuous hits
 		fadeOut.setOnFinished(e -> {
 			overlay.setOpacity(0.0);
 
