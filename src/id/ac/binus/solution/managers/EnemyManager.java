@@ -1,22 +1,15 @@
 package id.ac.binus.solution.managers;
 
-import game.controllers.AnimationController;
-import game.controllers.AudioController;
-import game.controllers.NPCMovementController;
-import game.core.audio.Audio;
-import game.core.audio.IAudio;
-import game.core.constants.BossStateEnum;
-import game.core.interfaces.CharacterContext;
-import game.core.models.Enemy;
-import game.core.models.Vector2D;
-import game.core.states.boss.BossState;
-import game.core.states.boss.SpawnLevitateState;
-import id.ac.binus.solution.core.animations.AnimationConfig;
-import id.ac.binus.solution.core.animations.CharacterAnimation;
+import id.ac.binus.solution.core.audio.IAudio;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
+import id.ac.binus.solution.core.models.Enemy;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.states.boss.BossState;
+import id.ac.binus.solution.core.states.boss.SpawnLevitateState;
 import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.interfaces.FXStartBehaviour;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
-import id.ac.binus.solution.game.core.animations.IAnimation
+import id.ac.binus.solution.game.core.animations.IAnimation;
 
 public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdateBehaviour {
 	private Enemy enemy;

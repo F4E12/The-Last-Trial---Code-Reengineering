@@ -1,16 +1,13 @@
 package id.ac.binus.solution.managers;
 
-import game.controllers.AnimationController;
-import game.controllers.AttackHandler;
-import game.controllers.AudioController;
-import game.controllers.MovementController;
-import game.core.audio.Audio;
-import game.core.audio.IAudio;
-import game.core.constants.PlayerStateEnum;
-import game.core.interfaces.CharacterContext;
-import game.core.models.Player;
-import game.core.models.Vector2D;
-import game.core.states.boss.BossState;
+import id.ac.binus.solution.controllers.MovementController;
+import id.ac.binus.solution.core.audio.Audio;
+import id.ac.binus.solution.core.audio.IAudio;
+import id.ac.binus.solution.core.constants.PlayerStateEnum;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
+import id.ac.binus.solution.core.models.Player;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.states.boss.BossState;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
