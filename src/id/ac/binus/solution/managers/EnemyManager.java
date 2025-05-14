@@ -14,14 +14,11 @@ import game.core.states.boss.SpawnLevitateState;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
-import id.ac.binus.solution.core.interfaces.AnimatedBehaviour;
-import id.ac.binus.solution.core.interfaces.AudioBehaviour;
 import id.ac.binus.solution.core.interfaces.FXStartBehaviour;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
-import id.ac.binus.solution.core.interfaces.VectorMotion;
-import id.ac.binus.solution.game.core.animations.IAnimation;
+import id.ac.binus.solution.game.core.animations.IAnimation
 
-public class EnemyManager implements AnimatedBehaviour, VectorMotion, AudioBehaviour, FXStartBehaviour, FXUpdateBehaviour {
+public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdateBehaviour {
 	private Enemy enemy;
 	private EnemyMovementManager movementManager;
 	private EnemyAnimationManager animationManager;
@@ -60,6 +57,7 @@ public class EnemyManager implements AnimatedBehaviour, VectorMotion, AudioBehav
 		return animationManager.getCurrentAnimation().getCyclesCompleted();
 	}
 
+	@Override
 	public IAnimation getCurrentAnimation() {
 		return animationManager.getCurrentAnimation();
 	}
@@ -78,6 +76,7 @@ public class EnemyManager implements AnimatedBehaviour, VectorMotion, AudioBehav
 		this.movementManager.setDirection(direction);
 	}
 
+	@Override
 	public void changeState(BossState newState) {
 		if (currentState != null) {
 			currentState.exit(this);
@@ -97,30 +96,37 @@ public class EnemyManager implements AnimatedBehaviour, VectorMotion, AudioBehav
 
 	}
 
+	@Override
 	public Vector2D getPos() {
 		return this.enemy.getPos();
 	}
 
+	@Override
 	public Vector2D[] getHitbox() {
 		return this.enemy.getHitbox();
 	}
 
+	@Override
 	public void updateHealth(int delta) {
 		this.enemy.updateHealth(delta);
 	}
 
+	@Override
 	public void setInvincible(boolean isInvincible) {
 		this.enemy.setInvincible(isInvincible);
 	}
 
+	@Override
 	public boolean isInvincible() {
 		return enemy.isInvincible();
 	}
 
+	@Override
 	public int getState() {
 		return Integer.MIN_VALUE;
 	}
 
+	@Override
 	public int getScale() {
 		return enemy.getScale();
 	}

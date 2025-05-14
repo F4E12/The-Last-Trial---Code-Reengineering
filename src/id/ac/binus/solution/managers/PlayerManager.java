@@ -14,13 +14,10 @@ import game.core.states.boss.BossState;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
-import id.ac.binus.solution.core.interfaces.AnimatedBehaviour;
-import id.ac.binus.solution.core.interfaces.AudioBehaviour;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
-import id.ac.binus.solution.core.interfaces.VectorMotion;
 import javafx.scene.input.KeyCode;
 
-public class PlayerManager implements AnimatedBehaviour, VectorMotion, AudioBehaviour, FXUpdateBehaviour {
+public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 	private final Player player;
     private final MovementController movementController;
     private final PlayerInputManager inputHandler;
@@ -106,37 +103,48 @@ public class PlayerManager implements AnimatedBehaviour, VectorMotion, AudioBeha
 
 	@Override
 	public IAudio getCurrentSound() {
-		return audioManager.getCurrentSound();
+		return null;
 	}
 
 	@Override
 	public void setSound(int soundId) {
 	}
 
+	@Override
+	public void changeState(BossState newState) {
+
+	}
+
+	@Override
 	public Vector2D getPos() {
 		return this.player.getPos();
 	}
 
+	@Override
 	public Vector2D[] getHitbox() {
 		return this.player.getHitbox();
 	}
 
+	@Override
 	public void updateHealth(int delta) {
 		this.player.updateHealth(delta);
 	}
 
+	@Override
 	public void setInvincible(boolean isInvincible) {
 		return;
 	}
 
+	@Override
 	public boolean isInvincible() {
 		return false;
 	}
 
+	@Override
 	public int getScale() {
 		return player.getScale();
 	}
-	
+	@Override
 	public int getState() {
 		return player.getState();
 	}
