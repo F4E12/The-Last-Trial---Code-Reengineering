@@ -1,14 +1,30 @@
 package id.ac.binus.solution.core.states.boss;
 
-import game.core.constants.BossStateEnum;
-import game.core.interfaces.CharacterContext;
+import id.ac.binus.solution.core.constants.BossStateEnum;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
+
+/*
+ * Smell Code : Dead Code
+ * Reason     : Method exit dari interface BossState tidak pernah dipakai
+ * Smell      : Delete Dead Code
+ */
+
+/*
+ * Smell Code : Long Method
+ * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
+ * Smell      : Extract Method
+ */
 
 public class SpawnState implements BossState {
 
-	@Override
-	public void start(CharacterContext context) {
+	private void initCharacter(CharacterContext context) {
 		context.setAnimation(BossStateEnum.SPAWN);
 		context.setInvincible(true);
+	}  
+	
+	@Override
+	public void start(CharacterContext context) {
+		initCharacter(context);
 	}
 
 	@Override
@@ -18,7 +34,4 @@ public class SpawnState implements BossState {
 		}
 	}
 
-	@Override
-	public void exit(CharacterContext context) {
-	}
 }
