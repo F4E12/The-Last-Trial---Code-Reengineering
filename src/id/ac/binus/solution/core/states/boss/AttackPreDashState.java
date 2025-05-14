@@ -1,29 +1,36 @@
 package id.ac.binus.solution.core.states.boss;
 
-import game.core.constants.BossStateEnum;
-import game.core.constants.Vector;
-import game.core.interfaces.CharacterContext;
+import id.ac.binus.solution.core.constants.BossStateEnum;
+import id.ac.binus.solution.core.constants.Vector;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
+
+/*
+ * Smell Code : Dead Code
+ * Reason     : Method exit dari interface BossState tidak pernah dipakai
+ * Smell      : Delete Dead Code
+ */
 
 public class AttackPreDashState implements BossState{
 
+  private void initCharacter(CharacterContext context) {
+	    context.setAnimation(BossStateEnum.ATTACK | BossStateEnum.PRE_DASH);
+	    context.setInvincible(false);
+  }
+	
   @Override
   public void start(CharacterContext context) {
-    context.setAnimation(BossStateEnum.ATTACK | BossStateEnum.PRE_DASH);
-    context.setInvincible(false);
+	  initCharacter(context);
   }
 
   @Override
   public void update(CharacterContext context) {
-    context.addForce(2 * (context.getDirection() * -1), Vector.X);
-    if(context.getAnimationCycleCount() > 0 ) {
+	int force = 2 * (context.getDirection() * -1);
+    context.addForce(force, Vector.X);
+    
+    int cycleCount = context.getAnimationCycleCount();
+    if(cycleCount > 0 ) {
       context.changeState(new AttackDashState());
     }
-  }
-
-  @Override
-  public void exit(CharacterContext context) {
-    // TODO Auto-generated method stub
-    
   }
 
 }

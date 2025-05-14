@@ -1,7 +1,7 @@
 package id.ac.binus.solution.core.interfaces;
 
-import game.core.models.Vector2D;
-import game.core.states.boss.BossState;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.states.boss.BossState;
 
 public interface CharacterContext extends AnimatedBehaviour, VectorMotion, AudioBehaviour {
 	public void changeState(BossState newState);

@@ -4,6 +4,12 @@ import game.core.constants.BossStateEnum;
 import game.core.constants.Vector;
 import game.core.interfaces.CharacterContext;
 
+/*
+ * Smell Code : Dead Code
+ * Reason     : Method exit dari interface BossState tidak pernah dipakai
+ * Smell      : Delete Dead Code
+ */
+
 public class AttackPreDashState implements BossState{
 
   @Override
