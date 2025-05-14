@@ -14,57 +14,38 @@ import game.core.states.boss.BossState;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
+import id.ac.binus.solution.core.interfaces.AnimatedBehaviour;
+import id.ac.binus.solution.core.interfaces.AudioBehaviour;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
+import id.ac.binus.solution.core.interfaces.VectorMotion;
 import javafx.scene.input.KeyCode;
 
-public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
+public class PlayerManager implements AnimatedBehaviour, VectorMotion, AudioBehaviour, FXUpdateBehaviour {
 	private final Player player;
-	private int stateCache = 1;
-	private Input input;
-	private final MovementController movementController;
-	private final AnimationController animationController;
-	private final AudioController audioController;
-	private final int attackDuration;
-	private final int staminaTreshold = 250;
-	// private int attackCd;
-	private int attackTimer;
+    private final MovementController movementController;
+    private final PlayerInputManager inputHandler;
+    private final PlayerCombatManager combatManager;
+    private final PlayerAnimationManager animationManager;
+    private final PlayerAudioManager audioManager;
 
 	public PlayerManager(Player player) {
-		this.player = player;
-		this.input = Input.getInstance();
-		this.movementController = new MovementController(player.getRb());
-		this.animationController = new AnimationController();
-		this.audioController = new AudioController();
-		this.attackDuration = 12;
-		// this.attackCd = 0;
-		this.attackTimer = 0;
-
-		initializeAnimations();
-		initializeAudio();
-	}
+        this.player = player;
+        this.movementController = new MovementController(player.getRb());
+        this.inputHandler = new PlayerInputManager();
+        this.combatManager = new PlayerCombatManager();
+        this.animationManager = new PlayerAnimationManager();
+        this.audioManager = new PlayerAudioManager();
+    }
 
 	@Override
-	public void update() {
-		handleInput();
-		handleMovement();
-		handleAnimation();
-		handleAttack();
-		handleStamina();
-		handleHealth();
-	}
-
-	private void handleStamina() {
-
-		player.updateStamina(5);
-
-	}
-
-	private void handleHealth() {
-
-		if (player.getHealth() <= 0)
-			System.exit(0);
-
-	}
+    public void update() {
+        inputHandler.handleInput(player, combatManager);
+        movementController.update(player.getPos());
+        combatManager.updateAttack(player);
+        combatManager.restoreStamina(player);
+        animationManager.update(player);
+        if (player.getHealth() <= 0) System.exit(0);
+    }
 
 	private void initializeAnimations() {
 		animationController.addAnimation(PlayerStateEnum.IDLE,
@@ -101,74 +82,12 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 		return movementController.getDirection();
 	}
 
-	private void handleMovement() {
-		movementController.update(player.getPos());
-	}
-
 	public void handleAttack() {
 		if (attackTimer > 0) {
 			attackTimer--;
 			if (attackTimer == 0) {
 				player.removeState(PlayerStateEnum.ATTACKING);
 			}
-		}
-		// if (attackCd > 0) {
-		// attackCd--;
-		// }
-	}
-
-	private void handleAnimation() {
-		animationController.update(System.currentTimeMillis());
-
-		if (player.hasState(PlayerStateEnum.ATTACKING)) {
-			if (stateCache != PlayerStateEnum.ATTACKING) {
-				stateCache = PlayerStateEnum.ATTACKING;
-				animationController.setCurrentAnimation(PlayerStateEnum.ATTACKING);
-			}
-			return;
-		}
-
-		int currentState = player.getState();
-		if (currentState != stateCache) {
-			stateCache = currentState;
-			animationController.setCurrentAnimation(currentState);
-		}
-	}
-
-	private void handleInput() {
-
-		if (input.getKey(KeyCode.SPACE)) {
-			if (attackTimer == 0 && player.getStamina() >= staminaTreshold) {
-				player.addState(PlayerStateEnum.ATTACKING);
-				AttackHandler.attack(0, 1, 20); // autism but yes
-				attackTimer = attackDuration;
-				// attackCd = 30;
-				player.updateStamina(-staminaTreshold);
-				return;
-			}
-		}
-
-		if (player.hasState(PlayerStateEnum.ATTACKING)) {
-			return;
-		}
-		if (player.getRb().getDelta().getY() > 0) {
-			player.setState(PlayerStateEnum.FALLING);
-			return;
-		}
-
-		if (input.getKey(KeyCode.W) && !player.hasState(PlayerStateEnum.FALLING)) {
-			player.addState(PlayerStateEnum.JUMPING);
-			return;
-		} else {
-			player.removeState(PlayerStateEnum.JUMPING);
-		}
-
-		if (input.getKey(KeyCode.A)) {
-			player.setState(PlayerStateEnum.WALKING);
-		} else if (input.getKey(KeyCode.D)) {
-			player.setState(PlayerStateEnum.WALKING);
-		} else {
-			player.setState(PlayerStateEnum.IDLE);
 		}
 	}
 
@@ -183,58 +102,41 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 
 	@Override
 	public void setAnimation(int animationId) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public IAudio getCurrentSound() {
-		// TODO Auto-generated method stub
-		return null;
+		return audioManager.getCurrentSound();
 	}
 
 	@Override
 	public void setSound(int soundId) {
-		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void changeState(BossState newState) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public Vector2D getPos() {
 		return this.player.getPos();
 	}
 
-	@Override
 	public Vector2D[] getHitbox() {
 		return this.player.getHitbox();
 	}
 
-	@Override
 	public void updateHealth(int delta) {
 		this.player.updateHealth(delta);
 	}
 
-	@Override
 	public void setInvincible(boolean isInvincible) {
 		return;
 	}
 
-	@Override
 	public boolean isInvincible() {
 		return false;
 	}
 
-	@Override
 	public int getScale() {
-		// TODO Auto-generated method stub
 		return player.getScale();
 	}
-
-	@Override
+	
 	public int getState() {
 		return player.getState();
 	}

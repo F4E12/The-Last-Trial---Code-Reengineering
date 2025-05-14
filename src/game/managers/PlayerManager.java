@@ -24,6 +24,14 @@ import javafx.scene.input.KeyCode;
 	Smell Code  : Comments
 	Reason		: There is some comments in this code
 	Treatment	: Remove comments
+
+	Smell Code 	: Long Parameter List
+	Reason		: Too many parameter in a method
+	Treatement	: Replace parameter with object
+
+	Smell Code	: Large Class
+	Reason		: This class have to many responsibility
+	Treatment	: Extract class
 */
 
 public class PlayerManager implements CharacterContext, FXBehaviour {

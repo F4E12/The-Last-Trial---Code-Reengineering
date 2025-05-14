@@ -1,11 +1,16 @@
 package game.managers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import game.controllers.AudioController;
 import game.core.audio.Audio;
 import game.core.interfaces.CharacterContext;
+import java.util.HashMap;
+import java.util.Map;
+
+/*
+ * Smell Code	: Duplicate code
+ * Reason		: Repetitive calls to addAudio with similar structure and hardcoded values.
+ * Treatment	: Extract method, by refactor by using a loop or extracting repeated logic into a helper method.
+ */
 
 public class GameManager {
 
