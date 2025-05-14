@@ -1,11 +1,20 @@
 package game.core.animations;
 
-
 import java.io.File;
 
 import javafx.scene.image.Image;
 
-public class CharacterAnimation implements IAnimation{
+/*
+ * Smell Code : Speculative Generality
+ * Reason     : The variables DEFAULT_FRAME_WIDTH and DEFAULT_FRAME_HEIGHT are only used once
+ * Solution   : Remove container variable
+ * 
+ * Smell Code : Data Clumps
+ * Reason     : Variables are identical
+ * Solution   : Group them into a value object
+ */
+
+public class CharacterAnimation implements IAnimation {
   private final int DEFAULT_FRAME_WIDTH = 60;
   private final int DEFAULT_FRAME_HEIGHT = 60;
 
@@ -16,15 +25,14 @@ public class CharacterAnimation implements IAnimation{
   private final int cropWidth;
   private final int cropHeight;
   private int cyclesCompleted;;
-  
+
   private int currentFrame;
   private long lastFrameTime;
-  
+
   public CharacterAnimation(
       String spritePath,
       int spriteColumns,
-      long frameDuration
-  ) {
+      long frameDuration) {
     this.spritePath = spritePath;
     this.spriteImage = new Image(new File(spritePath).toURI().toString());
     this.spriteColumns = spriteColumns;
@@ -35,37 +43,36 @@ public class CharacterAnimation implements IAnimation{
     this.currentFrame = 0;
     this.lastFrameTime = 0;
   }
-  
+
   public CharacterAnimation(
       String spritePath,
       int spriteColumns,
       long frameDuration,
       int cropWidth,
-      int cropHeight
-  ) {
+      int cropHeight) {
     this.spritePath = spritePath;
     this.spriteImage = new Image(new File(spritePath).toURI().toString());
     this.spriteColumns = spriteColumns;
     this.frameDuration = frameDuration;
     this.cropWidth = cropWidth;
     this.cropHeight = cropHeight;
-      }
+  }
 
   @Override
   public void start() {
     this.cyclesCompleted = 0;
   }
-  
+
   @Override
   public void update(long currentTime) {
-      if (currentTime - lastFrameTime >= this.frameDuration) {
-          currentFrame++;
-          if (currentFrame >= this.spriteColumns) {
-              currentFrame = 0;
-              ++cyclesCompleted;
-          }
-          lastFrameTime = currentTime;
+    if (currentTime - lastFrameTime >= this.frameDuration) {
+      currentFrame++;
+      if (currentFrame >= this.spriteColumns) {
+        currentFrame = 0;
+        ++cyclesCompleted;
       }
+      lastFrameTime = currentTime;
+    }
   }
 
   @Override
@@ -87,11 +94,10 @@ public class CharacterAnimation implements IAnimation{
   public int getCropHeight() {
     return this.cropHeight;
   }
-  
+
   @Override
   public int getCyclesCompleted() {
     return cyclesCompleted;
   }
 
-  
 }

@@ -4,8 +4,6 @@ import game.controllers.AnimationController;
 import game.controllers.AttackHandler;
 import game.controllers.AudioController;
 import game.controllers.MovementController;
-import game.core.animations.CharacterAnimation;
-import game.core.animations.IAnimation;
 import game.core.audio.Audio;
 import game.core.audio.IAudio;
 import game.core.constants.PlayerStateEnum;
@@ -13,6 +11,9 @@ import game.core.interfaces.CharacterContext;
 import game.core.models.Player;
 import game.core.models.Vector2D;
 import game.core.states.boss.BossState;
+import id.ac.binus.solution.core.animations.AnimationConfig;
+import id.ac.binus.solution.core.animations.CharacterAnimation;
+import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
 import javafx.scene.input.KeyCode;
 
@@ -25,7 +26,7 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 	private final AudioController audioController;
 	private final int attackDuration;
 	private final int staminaTreshold = 250;
-//	private int attackCd;
+	// private int attackCd;
 	private int attackTimer;
 
 	public PlayerManager(Player player) {
@@ -35,7 +36,7 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 		this.animationController = new AnimationController();
 		this.audioController = new AudioController();
 		this.attackDuration = 12;
-//		this.attackCd = 0;
+		// this.attackCd = 0;
 		this.attackTimer = 0;
 
 		initializeAnimations();
@@ -67,19 +68,21 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 
 	private void initializeAnimations() {
 		animationController.addAnimation(PlayerStateEnum.IDLE,
-				new CharacterAnimation("src/assets/sprite/player/player_idleedited.png", 4, 150));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_idleedited.png", 4, 150)));
 		animationController.addAnimation(PlayerStateEnum.WALKING,
-				new CharacterAnimation("src/assets/sprite/player/player_walk.png", 8, 40));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_walk.png", 8, 40)));
 		animationController.addAnimation(PlayerStateEnum.JUMPING,
-				new CharacterAnimation("src/assets/sprite/player/player_jump.png", 4, 200));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_jump.png", 4, 200)));
 		animationController.addAnimation(PlayerStateEnum.JUMPING | PlayerStateEnum.WALKING,
-				new CharacterAnimation("src/assets/sprite/player/player_jump.png", 4, 200));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_jump.png", 4, 200)));
 		animationController.addAnimation(PlayerStateEnum.FALLING,
-				new CharacterAnimation("src/assets/sprite/player/player_fall.png", 2, 150));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_fall.png", 2, 150)));
 		animationController.addAnimation(PlayerStateEnum.ATTACKING,
-				new CharacterAnimation("src/assets/sprite/player/player_attack_2.png", 8, 23, 80, 60));
+				new CharacterAnimation(new AnimationConfig("src/assets/sprite/player/player_attack_2.png", 8, 23), 80,
+						60));
 		animationController.addAnimation(PlayerStateEnum.ATTACKING | PlayerStateEnum.JUMPING,
-				new CharacterAnimation("src/assets/sprite/player/player_attack_airborne.png", 8, 23, 80, 60));
+				new CharacterAnimation(
+						new AnimationConfig("src/assets/sprite/player/player_attack_airborne.png", 8, 23), 80, 60));
 		animationController.setCurrentAnimation(PlayerStateEnum.IDLE);
 	}
 
@@ -109,9 +112,9 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 				player.removeState(PlayerStateEnum.ATTACKING);
 			}
 		}
-//		if (attackCd > 0) {
-//			attackCd--;
-//		}
+		// if (attackCd > 0) {
+		// attackCd--;
+		// }
 	}
 
 	private void handleAnimation() {
@@ -139,7 +142,7 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 				player.addState(PlayerStateEnum.ATTACKING);
 				AttackHandler.attack(0, 1, 20); // autism but yes
 				attackTimer = attackDuration;
-//				attackCd = 30;
+				// attackCd = 30;
 				player.updateStamina(-staminaTreshold);
 				return;
 			}
