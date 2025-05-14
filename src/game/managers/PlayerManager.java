@@ -20,6 +20,10 @@ import javafx.scene.input.KeyCode;
 	Smell Code	: Speculative Generality
 	Reason		: Start method from FXBehaviour is not implemented here
 	Treatment	: Create a separate interface for FXBehavoiur
+
+	Smell Code  : Comments
+	Reason		: There is some comments in this code
+	Treatment	: Remove comments
 */
 
 public class PlayerManager implements CharacterContext, FXBehaviour {
