@@ -8,6 +8,12 @@ import game.core.audio.IAudio;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/*
+ * Smell Code : Primitive Obsession 
+ * Reason     : Using integer to store audio state
+ * Treatment : Extract variable to enum
+ */
+
 public class AudioController {
 	private final HashMap<Integer, Audio> sounds;
 	private IAudio currentSound;

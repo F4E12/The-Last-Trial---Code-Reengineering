@@ -2,6 +2,12 @@ package game.core.models;
 
 import game.core.physics.RigidBody;
 
+/*
+ * Smell Code : Long Parameter List
+ * Reason     : Too many parameters in the Character Constructor
+ * Treatment  : Extract Parameter to Class
+ */
+
 public abstract class Character {
 	protected int health;
 	protected Vector2D pos;

@@ -15,6 +15,16 @@ import game.core.models.Vector2D;
 import game.core.states.boss.BossState;
 import game.core.states.boss.SpawnLevitateState;
 
+/*
+ 	Smell Code 	: Long Parameter List
+	Reason		: Too many parameter in a method
+	Treatement	: Replace parameter with object
+
+	Smell Code	: Large Class
+	Reason		: This class have to many responsibility (animation, audio, bos state)
+	Treatment	: Extract class (split into many class)
+ */
+
 public class EnemyManager implements CharacterContext, FXBehaviour {
 	private Enemy enemy;
 	private NPCMovementController movementController;

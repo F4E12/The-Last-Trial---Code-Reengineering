@@ -2,6 +2,18 @@ package game.core.models;
 
 import game.core.physics.RigidBody;
 
+/*
+ * Smell Code : Duplicate Code
+ * Reason     : Both Player and Enemy redeclare RigidBody rb, even though it's already present (and unused) in the base Character class.
+ * Treatment  : Move method
+ */
+
+ /*
+  * Smell Code : Speculative Generality 
+  * Reason     : Enemy class is a subclass of Character, but it doesn't implement any methods that are declared in Character.
+  * Treatment  : Remove method
+  */
+
 public class Enemy extends Character{
 	private RigidBody rb;
 	

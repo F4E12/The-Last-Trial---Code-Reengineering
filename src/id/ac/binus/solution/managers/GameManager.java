@@ -1,11 +1,10 @@
 package id.ac.binus.solution.managers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import game.controllers.AudioController;
 import game.core.audio.Audio;
 import game.core.interfaces.CharacterContext;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameManager {
 
@@ -31,9 +30,15 @@ public class GameManager {
 	}
 
 	public void initializeGameSounds() {
-		audioController.addAudio(0, new Audio("src/assets/audio/sfx/player_hurt.wav"));
-		audioController.addAudio(1, new Audio("src/assets/audio/sfx/player_hurt2.wav"));
-		audioController.addAudio(2, new Audio("src/assets/audio/sfx/player_hurt3.wav"));
+		String[] sounds = {
+			"src/assets/audio/sfx/player_hurt.wav",
+			"src/assets/audio/sfx/player_hurt2.wav",
+			"src/assets/audio/sfx/player_hurt3.wav"
+		};
+		
+		for (int i = 0; i < sounds.length; i++) {
+			audioController.addAudio(i, new Audio(sounds[i]));
+		}
 	}
 
 	public void playGameSound(int soundId) {
