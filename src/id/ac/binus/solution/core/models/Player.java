@@ -1,41 +1,19 @@
 package id.ac.binus.solution.core.models;
 
-import game.core.physics.RigidBody;
-
 public class Player extends Character {
-	private RigidBody rb;
 	private int state;
 	private int stamina;
 
 	public Player(int health, Vector2D pos, int state, int scale) {
-    super(
-      health,
-      pos, 
-      new Vector2D[] {
-          new Vector2D(60, 0), // bottom left
-          new Vector2D(60 * (scale), 60 * (scale)) // top right
-          },
-      scale
-    );
-   
-    this.health = health;
-    this.pos = pos;
-    this.rb = new RigidBody(new Vector2D(20, 50));
-    this.state = state;
-    this.stamina = 1000;
-    setInvincible(false);
-	}
+		super(new CharacterAttributes(
+		health,
+		pos,
+		scale,
+		new Hitbox(new Vector2D(60, 0), new Vector2D(60 * scale, 60 * scale))
+		), new Vector2D(20, 50));
 
-	@Override
-	public void spawn() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub
-
+		this.state = state;
+		this.stamina = 1000;
 	}
 
 	public void resetState() {
@@ -58,24 +36,12 @@ public class Player extends Character {
 		return (this.state & requiredStates) == requiredStates && (this.state & forbiddenStates) == 0;
 	}
 
-	public void setHealth(int health) {
-		this.health = health;
-	}
-
-	public void setPos(Vector2D pos) {
-		this.pos = pos;
-	}
-
 	public void setState(int state) {
 		this.state = state;
 	}
 
 	public int getState() {
 		return this.state;
-	}
-
-	public RigidBody getRb() {
-		return this.rb;
 	}
 
 	public void updateStamina(int staminaModifier) {

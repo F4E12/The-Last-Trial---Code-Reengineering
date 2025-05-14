@@ -1,25 +1,30 @@
 package id.ac.binus.solution.core.models;
 
-import game.core.physics.RigidBody;
+import id.ac.binus.solution.core.physics.RigidBody;
 
 public abstract class Character {
-	protected int health;
-	protected Vector2D pos;
-	protected Vector2D[] hitbox;
-	protected RigidBody rb;
-	protected boolean invincible;
-	protected int scale;
-	
-	protected Character(int health, Vector2D pos, Vector2D[] hitbox, int scale) {
-    this.health = health;
-    this.pos = pos;
-    this.hitbox = hitbox;
-    this.invincible = false;
-    this.scale = scale;
-  }
+	private int health;
+	private Vector2D pos;
+	private Hitbox hitbox;
+	private final int scale;
+	private boolean invincible;
+	private final RigidBody rb;
 
-	public void updateHealth(int health) {
-		this.health += health;
+	protected Character(CharacterAttributes attr, Vector2D terminalVelocity) {
+		this.health = attr.health;
+		this.pos = attr.pos;
+		this.hitbox = attr.hitbox;
+		this.scale = attr.scale;
+		this.invincible = false;
+		this.rb = new RigidBody(terminalVelocity);
+	}
+
+	public RigidBody getRigidBody() {
+		return this.rb;
+	}
+
+	public Vector2D[] getHitboxArray() {
+		return hitbox.asArray();
 	}
 
 	public Vector2D getPos() {
@@ -30,10 +35,6 @@ public abstract class Character {
 		this.pos = pos;
 	}
 
-	public Vector2D[] getHitbox() {
-		return this.hitbox;
-	}
-
 	public int getHealth() {
 		return health;
 	}
@@ -42,19 +43,19 @@ public abstract class Character {
 		this.health = health;
 	}
 
-	public void setInvincible(boolean isInvincible) {
-		this.invincible = isInvincible;
+	public void updateHealth(int delta) {
+		this.health += delta;
+	}
+
+	public int getScale() {
+		return this.scale;
 	}
 
 	public boolean isInvincible() {
-		return this.invincible;
-	}
-	
-	public int getScale() {
-	  return this.scale;
+		return invincible;
 	}
 
-	public abstract void spawn();
-
-	public abstract void die();
+	public void setInvincible(boolean invincible) {
+		this.invincible = invincible;
+	}
 }

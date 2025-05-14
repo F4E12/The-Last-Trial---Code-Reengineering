@@ -7,6 +7,11 @@ import game.core.physics.RigidBody;
 import game.managers.Input;
 import javafx.scene.input.KeyCode;
 
+/*
+ * Smell Code : Primitive Obsession
+ * Reason     : Using integer to store direction
+ * Treatment  : Extract variable to enum
+ */
 
 public class MovementController extends RigidBodyController {
   private final int acceleration;

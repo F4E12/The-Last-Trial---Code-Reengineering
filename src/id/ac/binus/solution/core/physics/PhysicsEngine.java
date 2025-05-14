@@ -1,7 +1,6 @@
 package id.ac.binus.solution.core.physics;
 
-import game.core.models.Vector2D;
-
+import id.ac.binus.solution.core.models.Vector2D;
 
 public class PhysicsEngine {
     private static final Vector2D leftBoundary = new Vector2D(240, 800);

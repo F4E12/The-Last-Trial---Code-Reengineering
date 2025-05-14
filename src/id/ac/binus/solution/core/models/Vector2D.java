@@ -43,5 +43,15 @@ public class Vector2D {
 	public void updateY(double y) {
 		this.y += y;
 	}
+
+	public void clampToRange(Vector2D min, Vector2D max) {
+		this.x = Math.max(min.getX(), Math.min(this.x, max.getX()));
+		this.y = Math.max(min.getY(), Math.min(this.y, max.getY()));
+	}
+
+	public Vector2D negate() {
+		return new Vector2D(-this.x, -this.y);
+	}
+
 	
 }

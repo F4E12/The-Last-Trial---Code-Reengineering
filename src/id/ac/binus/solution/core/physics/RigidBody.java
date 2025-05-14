@@ -1,10 +1,10 @@
 package id.ac.binus.solution.core.physics;
 
-import game.core.models.Vector2D;
+import id.ac.binus.solution.core.models.Vector2D;
 
 public class RigidBody {
 
-  private Vector2D velocity;
+  private id.ac.binus.solution.core.models.Vector2D velocity;
   private Vector2D delta;
   private final Vector2D terminalVelocity;
   private final PhysicsEngine physics;
@@ -17,35 +17,25 @@ public class RigidBody {
   }
 
   public void update(Vector2D pos) {
-     
     physics.applyFriction(velocity);
     physics.applyGravity(velocity);
-  
-    velocity.setX(
-        Math.max(-terminalVelocity.getX(), Math.min(velocity.getX(), terminalVelocity.getX()))
-    );
-  
-    velocity.setY(
-        Math.max(-terminalVelocity.getY(), Math.min(velocity.getY(), terminalVelocity.getY()))
-    );
-  
+
+    velocity.clampToRange(terminalVelocity.negate(), terminalVelocity);
     delta.set(velocity.getX(), velocity.getY());
-  
+
     physics.applyBoundaryLimits(pos, delta);
-  
     pos.update(delta.getX(), delta.getY());
   }
 
-
   public Vector2D getVelocity() {
-      return velocity;
+    return velocity;
   }
 
   public void setVelocity(Vector2D velocity) {
-      this.velocity = velocity;
+    this.velocity = velocity;
   }
 
   public Vector2D getDelta() {
-      return delta;
+    return delta;
   }
 }
