@@ -49,6 +49,10 @@ import javafx.stage.Stage;
  * Smell Code	: Comments
  * Reason		: There is comments in this file
  * Treatment	: Remove comments
+ * 
+ * Smell Code 	: Dead code
+ * Reason		: There is part of code that not beeing used
+ * Treatement	: Remove the code
  */
 
 public class Main extends Application {
