@@ -2,7 +2,9 @@ package id.ac.binus.solution.core.states.boss;
 
 import id.ac.binus.solution.core.constants.BossStateEnum;
 import id.ac.binus.solution.core.constants.Vector;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
+import id.ac.binus.solution.managers.EnemyManager;
 
 /*
  * Smell Code : Dead Code
@@ -16,7 +18,7 @@ import id.ac.binus.solution.core.interfaces.CharacterContext;
  * Smell      : Extract Method
  */
 
-public class SpawnLevitateState implements BossState {
+public class SpawnLevitateState implements BossState, ExitableState {
 
 	private void initCharacter(CharacterContext context) {
 		context.setAnimation(BossStateEnum.SPAWN | BossStateEnum.LEVITATE);
@@ -34,8 +36,13 @@ public class SpawnLevitateState implements BossState {
 		if (context.getAnimationCycleCount() > 0) {
 			context.changeState(new LevitateState());
 		} else {
-			context.addForce(2 * Vector.UP, Vector.Y);
+			context.addForce(2 * Vector.UP, Direction.Y);
 		}
 
 	}
+	
+	@Override
+    public void exit(EnemyManager enemyManager) {
+        // Do cleanup
+    }
 }

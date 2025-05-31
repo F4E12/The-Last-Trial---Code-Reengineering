@@ -1,7 +1,7 @@
 package id.ac.binus.solution.core.states.boss;
 
 import id.ac.binus.solution.core.constants.BossStateEnum;
-import id.ac.binus.solution.core.constants.Vector;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 /*
@@ -24,8 +24,8 @@ public class AttackPreDashState implements BossState{
 
   @Override
   public void update(CharacterContext context) {
-	int force = 2 * (context.getDirection() * -1);
-    context.addForce(force, Vector.X);
+	int force = 2 * (context.getDirection().getValue() * -1);
+    context.addForce(force, Direction.X);
     
     int cycleCount = context.getAnimationCycleCount();
     if(cycleCount > 0 ) {

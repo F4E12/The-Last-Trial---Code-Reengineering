@@ -1,6 +1,6 @@
 package id.ac.binus.solution.controllers;
 
-import game.core.interfaces.CharacterContext;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 public class BoundingBox {
     private double left, bottom, right, top;

@@ -17,7 +17,7 @@ public class PlayerInputManager {
 
         if (player.hasState(PlayerStateEnum.ATTACKING)) return;
 
-        if (player.getRb().getDelta().getY() > 0) {
+        if (player.getRigidBody().getDelta().getY() > 0) {
             player.setState(PlayerStateEnum.FALLING);
             return;
         }

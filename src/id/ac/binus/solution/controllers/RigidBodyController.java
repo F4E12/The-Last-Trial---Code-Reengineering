@@ -1,8 +1,8 @@
 package id.ac.binus.solution.controllers;
 
-import game.core.interfaces.VectorMotion;
-import game.core.models.Vector2D;
-import game.core.physics.RigidBody;
+import id.ac.binus.solution.core.interfaces.VectorMotion;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.physics.RigidBody;
 
 public abstract class RigidBodyController implements VectorMotion {
 

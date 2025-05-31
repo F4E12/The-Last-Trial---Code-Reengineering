@@ -1,8 +1,9 @@
 package id.ac.binus.solution.managers;
 
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.controllers.NPCMovementController;
-import game.core.models.Vector2D;
-import game.core.physics.RigidBody;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.physics.RigidBody;
 
 public class EnemyMovementManager {
     private NPCMovementController movementController;
@@ -15,15 +16,15 @@ public class EnemyMovementManager {
         movementController.update(pos);
     }
 
-    public void addForce(double force, int direction) {
+    public void addForce(double force, Direction direction) {
         movementController.addForce(force, direction);
     }
 
-    public Vector2D getDirection() {
+    public Direction getDirection() {
         return movementController.getDirection();
     }
 
-    public void setDirection(int direction) {
+    public void setDirection(Direction direction) {
         movementController.setDirection(direction);
     }
 }

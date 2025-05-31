@@ -1,9 +1,7 @@
 package id.ac.binus.solution.main;
+
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import id.ac.binus.solution.core.models.Enemy;
-import id.ac.binus.solution.core.models.Player;
-import id.ac.binus.solution.managers.EnemyManager;
-import id.ac.binus.solution.managers.PlayerManager;
 
 public class GameSceneBuilder {
     public StackPane buildGameContainer() {

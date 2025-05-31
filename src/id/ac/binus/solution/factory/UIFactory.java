@@ -2,6 +2,7 @@ package id.ac.binus.solution.factory;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -25,7 +26,7 @@ import javafx.scene.text.Font;
 
 public class UIFactory {
 	
-	private static final String FONT_PATH = "/assets/font/prstartk-webfont.ttf";
+	private static final String FONT_PATH = "src/assets/font/prstartk-webfont.ttf";
 
     private static void styleNode(Labeled node, Font font) {
         node.setStyle("-fx-background-color: none;");

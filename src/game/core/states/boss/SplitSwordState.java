@@ -3,7 +3,6 @@ package game.core.states.boss;
 import java.util.Random;
 
 import game.core.constants.BossStateEnum;
-import game.core.constants.Vector;
 import game.core.interfaces.CharacterContext;
 
 /*

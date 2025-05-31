@@ -1,8 +1,8 @@
 package id.ac.binus.solution.managers;
 
-import id.ac.binus.solution.managers.AnimationController;
-import id.ac.binus.solution.managers.CharacterAnimation;
-import id.ac.binus.solution.managers.IAnimation;
+import id.ac.binus.solution.controllers.AnimationController;
+import id.ac.binus.solution.core.animations.CharacterAnimation;
+import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.constants.BossStateEnum;
 

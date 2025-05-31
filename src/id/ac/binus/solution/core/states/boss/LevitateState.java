@@ -2,6 +2,7 @@ package id.ac.binus.solution.core.states.boss;
 
 import id.ac.binus.solution.core.constants.BossStateEnum;
 import id.ac.binus.solution.core.constants.Vector;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 /*
@@ -38,7 +39,7 @@ public class LevitateState implements BossState {
 	@Override
 	public void update(CharacterContext context) {
 		if (context.getAnimationCycleCount() <= 3) {
-			context.addForce(2 * Vector.UP, Vector.Y);
+			context.addForce(2 * Vector.UP, Direction.Y);
 		}else {
 			context.changeState(new IdleState());			
 		}

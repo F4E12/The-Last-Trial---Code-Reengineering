@@ -1,5 +1,8 @@
 package id.ac.binus.solution.managers;
 
+import id.ac.binus.solution.controllers.AnimationController;
+import id.ac.binus.solution.controllers.AudioController;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.controllers.MovementController;
 import id.ac.binus.solution.core.audio.Audio;
 import id.ac.binus.solution.core.audio.IAudio;
@@ -12,7 +15,6 @@ import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
-import javafx.scene.input.KeyCode;
 
 public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 	private final Player player;
@@ -20,15 +22,19 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
     private final PlayerInputManager inputHandler;
     private final PlayerCombatManager combatManager;
     private final PlayerAnimationManager animationManager;
-    private final PlayerAudioManager audioManager;
+    private final AudioController audioController;
+    private final AnimationController animationController;
 
 	public PlayerManager(Player player) {
         this.player = player;
-        this.movementController = new MovementController(player.getRb());
+        this.movementController = new MovementController(player.getRigidBody());
         this.inputHandler = new PlayerInputManager();
         this.combatManager = new PlayerCombatManager();
         this.animationManager = new PlayerAnimationManager();
-        this.audioManager = new PlayerAudioManager();
+        this.animationController = new AnimationController();
+        this.audioController = new AudioController();
+        initializeAnimations();
+        initializeAudio();
     }
 
 	@Override
@@ -67,22 +73,13 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 	}
 
 	@Override
-	public void addForce(double force, int direction) {
+	public void addForce(double force, Direction direction) {
 		movementController.addForce(force, direction);
 	}
 
 	@Override
-	public int getDirection() {
+	public Direction getDirection() {
 		return movementController.getDirection();
-	}
-
-	public void handleAttack() {
-		if (attackTimer > 0) {
-			attackTimer--;
-			if (attackTimer == 0) {
-				player.removeState(PlayerStateEnum.ATTACKING);
-			}
-		}
 	}
 
 	public IAnimation getCurrentAnimation() {
@@ -119,7 +116,7 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 
 	@Override
 	public Vector2D[] getHitbox() {
-		return this.player.getHitbox();
+		return this.player.getHitboxArray();
 	}
 
 	@Override
@@ -144,6 +141,10 @@ public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
 	@Override
 	public int getState() {
 		return player.getState();
+	}
+
+	public void start() {
+		
 	}
 
 }

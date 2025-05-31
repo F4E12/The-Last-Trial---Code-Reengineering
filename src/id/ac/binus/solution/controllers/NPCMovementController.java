@@ -1,9 +1,7 @@
 package id.ac.binus.solution.controllers;
 
-import game.controllers.RigidBodyController;
-import game.core.constants.Vector;
-import game.core.models.Vector2D;
-import game.core.physics.RigidBody;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.physics.RigidBody;
 
 /*
  * Smell Code : Primitive Obsession
@@ -18,11 +16,11 @@ import game.core.physics.RigidBody;
  */
 
 public class NPCMovementController extends RigidBodyController {
-  private Vector direction;
+  private Direction direction;
 
   public NPCMovementController(RigidBody rb) {
     super(rb);
-    this.direction = Vector.LEFT;
+    this.direction = Direction.LEFT;
   }
 
   @Override
@@ -31,21 +29,21 @@ public class NPCMovementController extends RigidBodyController {
   }
 
   @Override
-  public void addForce(double force, int direction) {
-    if(direction ==  Vector.X) {
+  public void addForce(double force, Direction direction) {
+    if(direction ==  Direction.X) {
       rb.getVelocity().updateX(force);
     }
-    else if(direction == Vector.Y) {
+    else if(direction == Direction.Y) {
       rb.getVelocity().updateY(force);
     }
   }
   
   @Override
-  public Vector getDirection() {
+  public Direction getDirection() {
     return this.direction;
   }
   
-  public void setDirection(int direction) {
+  public void setDirection(Direction direction) {
     this.direction = direction;
   }
 }

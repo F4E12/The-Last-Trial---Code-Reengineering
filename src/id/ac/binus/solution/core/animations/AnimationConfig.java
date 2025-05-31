@@ -1,6 +1,7 @@
 package id.ac.binus.solution.core.animations;
 
 import java.io.File;
+import javafx.scene.image.Image;
 
 public class AnimationConfig {
     public final String spritePath;
@@ -13,5 +14,15 @@ public class AnimationConfig {
         this.spriteImage = new Image(new File(spritePath).toURI().toString());
         this.spriteColumns = spriteColumns;
         this.frameDuration = frameDuration;
+    }
+    
+    public long getFrameDuration() {
+		return frameDuration;
+    }
+    public int getSpriteColumns() {
+		return spriteColumns;
+    }
+    public Image getSpriteImage() {
+    	return spriteImage;
     }
 }

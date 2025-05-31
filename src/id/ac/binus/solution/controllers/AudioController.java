@@ -3,33 +3,33 @@ package id.ac.binus.solution.controllers;
 import java.io.File;
 import java.util.HashMap;
 
-import game.core.audio.Audio;
-import game.core.audio.IAudio;
+import id.ac.binus.solution.core.audio.Audio;
+import id.ac.binus.solution.core.audio.IAudio;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 /*
  * Smell Code : Primitive Obsession 
  * Reason     : Using integer to store audio state
- * Treatment : Extract variable to enum
+ * Treatment  : Extract variable to enum
  */
 
 public class AudioController {
-	private final HashMap<AudioState, Audio> sounds;
+	private final HashMap<Integer, Audio> sounds;
 	private IAudio currentSound;
 
 	public AudioController() {
 		this.sounds = new HashMap<>();
 	}
 
-	public void addAudio(AudioState state, Audio sound) {
+	public void addAudio(Integer state, Audio sound) {
 		sounds.put(state, sound);
 	}
 
-	public void setCurrentSound(AudioState state) {
+	public void setCurrentSound(int soundId) {
 		if (currentSound != null)
 			currentSound.stop();
-		currentSound = sounds.get(state);
+		currentSound = sounds.get(soundId);
 		currentSound.play();
 	}
 

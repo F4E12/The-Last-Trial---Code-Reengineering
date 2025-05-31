@@ -3,7 +3,6 @@ package id.ac.binus.solution.core.states.boss;
 import java.util.Random;
 
 import id.ac.binus.solution.core.constants.BossStateEnum;
-import id.ac.binus.solution.core.constants.Vector;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 /*

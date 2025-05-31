@@ -1,8 +1,8 @@
 package id.ac.binus.solution.core.states.boss;
 
 import id.ac.binus.solution.controllers.AttackHandler;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.constants.BossStateEnum;
-import id.ac.binus.solution.core.constants.Vector;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 /*
@@ -52,8 +52,8 @@ public class AttackDashState implements BossState {
 			hasAttacked = AttackHandler.attack(1, 0, 50);
 		}
 		if (!dashed) {
-			int force = 60 * context.getDirection();
-			context.addForce(force, Vector.X);
+			int force = 60 * context.getDirection().getValue();
+			context.addForce(force, Direction.X);
 			dashed = true;
 		}
 		

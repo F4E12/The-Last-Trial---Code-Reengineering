@@ -29,7 +29,7 @@ public class EnemyAudioManager {
         return audioController.getCurrentSound();
     }
 
-    public void setCurrentSound(int id) {
-        audioController.setCurrentSound(id);
+    public void setCurrentSound(int soundId) {
+        audioController.setCurrentSound(soundId);
     }
 }

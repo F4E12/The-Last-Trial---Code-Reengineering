@@ -1,11 +1,18 @@
 package id.ac.binus.solution.camera;
 
-import javax.swing.text.html.ImageView;
-
-import org.w3c.dom.Node;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class Effect {
-    private static void applyVibration(Pane pane) {
+	public static void applyVibration(Pane pane) {
         double initialMagnitude = 30;
         int iterations = 3;
         javafx.animation.Timeline vibrationTimeline = new javafx.animation.Timeline();
@@ -22,7 +29,7 @@ public class Effect {
         vibrationTimeline.play();
     }
 
-    private void applyOverlayEffect(ImageView overlay) {
+    public static void applyOverlayEffect(ImageView overlay) {
         overlay.setOpacity(0.8);
         FadeTransition fadeOut = new FadeTransition(Duration.millis(3000), overlay);
         fadeOut.setFromValue(0.8);
@@ -37,7 +44,7 @@ public class Effect {
         fadeOut.play();
     }
 
-    private void applyFadeEffect(Node node) {
+    public static void applyFadeEffect(Node node) {
         Pane pane = (Pane) node;
         Rectangle fadeOverlay = new Rectangle(pane.getWidth() * 0.5 * 0.92, 40, Color.WHITE);
         fadeOverlay.setOpacity(0);

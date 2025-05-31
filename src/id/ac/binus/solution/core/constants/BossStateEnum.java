@@ -1,7 +1,6 @@
 package id.ac.binus.solution.core.constants;
 
 public class BossStateEnum {
-  
   public static final int SPAWN = 1 << 0;
   public static final int IDLE = 1 << 1;
   public static final int LEVITATE = 1 << 2;

@@ -1,6 +1,5 @@
 package id.ac.binus.solution.main;
 
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -8,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import id.ac.binus.solution.core.models.Player;
 import id.ac.binus.solution.core.models.Enemy;
-import id.ac.binus.solution.UIFactory;
 
 public class GameUIManager {
     private Rectangle playerHealthBar;
@@ -19,16 +17,13 @@ public class GameUIManager {
     private Rectangle enemyHealthBarBackground;
     private ImageView enemyBarImgView;
 
-    private Label playerHealthLabel;
-    private Label enemyHealthLabel;
-
     public StackPane buildPlayerUI(Player player) {
         double barWidth = 200;
         double barHeight = 24;
         playerHealthBar = new Rectangle(barWidth, barHeight, Color.GREENYELLOW);
         playerStaminaBar = new Rectangle(barWidth, barHeight, Color.DARKCYAN);
 
-        playerBarImgView = new ImageView(new Image("./assets/sprite/ui/player_healthbar.png"));
+        playerBarImgView = new ImageView(new Image("/assets/sprite/ui/player_healthbar.png"));
         playerBarImgView.setFitWidth(barWidth);
         playerBarImgView.setPreserveRatio(true);
 
@@ -42,7 +37,7 @@ public class GameUIManager {
         enemyHealthBarForeground = new Rectangle(barWidth, 40, Color.web("#992222"));
         enemyHealthBarBackground = new Rectangle(barWidth, 20, Color.web("#b52a2a"));
 
-        enemyBarImgView = new ImageView(new Image("./assets/sprite/ui/boss_healthbar.png"));
+        enemyBarImgView = new ImageView(new Image("/assets/sprite/ui/boss_healthbar.png"));
         enemyBarImgView.setFitWidth(barWidth);
         enemyBarImgView.setPreserveRatio(true);
 

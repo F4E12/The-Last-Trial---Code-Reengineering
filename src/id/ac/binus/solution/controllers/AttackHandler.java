@@ -2,9 +2,9 @@ package id.ac.binus.solution.controllers;
 
 import java.util.Random;
 
-import game.camera.PaneObserver;
-import game.core.interfaces.CharacterContext;
-import game.managers.GameManager;
+import id.ac.binus.solution.camera.PaneObserver;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
+import id.ac.binus.solution.managers.GameManager;
 
 /*
  * Smell Code : Long Method
@@ -55,7 +55,7 @@ public class AttackHandler {
 		if (targetId == ENEMY_ID) {
 			PaneObserver.getInstance().notifyEnemyListeners();
 		} else if (targetId == PLAYER_ID) {
-			target.addForce(60 * attacker.getDirection(), game.core.constants.Vector.X);
+			target.addForce(60 * attacker.getDirection().getValue(), Direction.X);
 			PaneObserver.getInstance().notifyPlayerListeners();
 		}
 	}

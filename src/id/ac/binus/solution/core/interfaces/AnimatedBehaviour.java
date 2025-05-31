@@ -1,6 +1,6 @@
 package id.ac.binus.solution.core.interfaces;
 
-import game.core.animations.IAnimation;
+import id.ac.binus.solution.core.animations.IAnimation;
 
 public interface AnimatedBehaviour {
   public IAnimation getCurrentAnimation();

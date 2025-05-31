@@ -1,7 +1,5 @@
 package id.ac.binus.solution.core.animations;
 
-import java.io.File;
-
 import javafx.scene.image.Image;
 
 public class CharacterAnimation implements IAnimation {
@@ -34,9 +32,9 @@ public class CharacterAnimation implements IAnimation {
 
   @Override
   public void update(long currentTime) {
-    if (currentTime - lastFrameTime >= this.frameDuration) {
+    if (currentTime - lastFrameTime >= animationConfig.getFrameDuration()) {
       currentFrame++;
-      if (currentFrame >= this.spriteColumns) {
+      if (currentFrame >= animationConfig.getSpriteColumns()) {
         currentFrame = 0;
         ++cyclesCompleted;
       }
@@ -51,7 +49,7 @@ public class CharacterAnimation implements IAnimation {
 
   @Override
   public Image getSpriteImage() {
-    return this.spriteImage;
+    return animationConfig.getSpriteImage();
   }
 
   @Override

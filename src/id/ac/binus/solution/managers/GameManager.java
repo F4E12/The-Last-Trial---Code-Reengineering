@@ -1,8 +1,8 @@
 package id.ac.binus.solution.managers;
 
-import game.controllers.AudioController;
-import game.core.audio.Audio;
-import game.core.interfaces.CharacterContext;
+import id.ac.binus.solution.controllers.AudioController;
+import id.ac.binus.solution.core.audio.Audio;
+import id.ac.binus.solution.core.interfaces.CharacterContext;
 import java.util.HashMap;
 import java.util.Map;
 

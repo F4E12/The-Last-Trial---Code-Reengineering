@@ -5,11 +5,12 @@ import id.ac.binus.solution.core.interfaces.CharacterContext;
 import id.ac.binus.solution.core.models.Enemy;
 import id.ac.binus.solution.core.models.Vector2D;
 import id.ac.binus.solution.core.states.boss.BossState;
+import id.ac.binus.solution.core.states.boss.ExitableState;
 import id.ac.binus.solution.core.states.boss.SpawnLevitateState;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.interfaces.FXStartBehaviour;
 import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
-import id.ac.binus.solution.game.core.animations.IAnimation;
 
 public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdateBehaviour {
 	private Enemy enemy;
@@ -20,7 +21,7 @@ public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdat
 
 	public EnemyManager(Enemy enemy) {
 		this.enemy = enemy;
-		this.movementManager = new EnemyMovementManager(enemy.getRb());
+		this.movementManager = new EnemyMovementManager(enemy.getRigidBody());
 		this.animationManager = new EnemyAnimationManager();
 		this.audioManager = new EnemyAudioManager();
 		this.currentState = new SpawnLevitateState();
@@ -56,23 +57,23 @@ public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdat
 	}
 
 	@Override
-	public void addForce(double force, int direction) {
+	public void addForce(double force, Direction direction) {
 		movementManager.addForce(force, direction);
 	}
 
 	@Override
-	public int getDirection() {
+	public Direction getDirection() {
 		return this.movementManager.getDirection();
 	}
 
-	public void setDirection(int direction) {
+	public void setDirection(Direction direction) {
 		this.movementManager.setDirection(direction);
 	}
 
 	@Override
 	public void changeState(BossState newState) {
-		if (currentState != null) {
-			currentState.exit(this);
+		if (currentState instanceof ExitableState) {
+		    ((ExitableState) currentState).exit(this);
 		}
 		currentState = newState;
 		currentState.start(this);
@@ -96,7 +97,7 @@ public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdat
 
 	@Override
 	public Vector2D[] getHitbox() {
-		return this.enemy.getHitbox();
+		return this.enemy.getHitboxArray();
 	}
 
 	@Override

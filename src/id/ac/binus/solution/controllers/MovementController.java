@@ -1,10 +1,10 @@
 package id.ac.binus.solution.controllers;
 
-import game.controllers.RigidBodyController;
-import game.core.models.Vector2D;
-import game.core.physics.PhysicsEngine;
-import game.core.physics.RigidBody;
-import game.managers.Input;
+import id.ac.binus.solution.core.models.Vector2D;
+import id.ac.binus.solution.core.physics.PhysicsEngine;
+import id.ac.binus.solution.core.physics.RigidBody;
+import id.ac.binus.solution.managers.Input;
+import javafx.scene.input.KeyCode;
 
 /*
  * Smell Code : Primitive Obsession
@@ -51,7 +51,7 @@ public class MovementController extends RigidBodyController {
     }
 
     @Override
-    public void addForce(double force, int direction) {
+    public void addForce(double force, Direction direction) {
         if (direction == Direction.X) {
             rb.getVelocity().updateX(force);
         } else if (direction == Direction.Y) {

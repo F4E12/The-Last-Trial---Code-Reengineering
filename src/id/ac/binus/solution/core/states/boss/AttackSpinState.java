@@ -1,8 +1,8 @@
 package id.ac.binus.solution.core.states.boss;
 
 import id.ac.binus.solution.controllers.AttackHandler;
+import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.constants.BossStateEnum;
-import id.ac.binus.solution.core.constants.Vector;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
 /*
@@ -55,8 +55,8 @@ public class AttackSpinState implements BossState {
 		
 		if (cycleCount > 1) {
 			if(hasAttacked) {
-				int force = 20 * (context.getDirection()*-1);
-				context.addForce(force, Vector.X);
+				int force = 20 * (context.getDirection().getValue()*-1);
+				context.addForce(force, Direction.X);
 				
 				context.changeState(new SplitSwordState());
 			} else {
