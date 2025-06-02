@@ -37,6 +37,12 @@ import game.core.interfaces.CharacterContext;
  * Smell      : Extract Class
  */
 
+/*
+ * Smell Code : Duplicate Code
+ * Reason     : Terdapat pengulangan declare variable yg sebenarnya tidak diperlukan
+ * Smell      : Extract Variable
+ */
+
 public class IdleDespawnState implements BossState {
 
 	private double nextSpawnPositionX;

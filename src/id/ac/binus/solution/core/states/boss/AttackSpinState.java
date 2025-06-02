@@ -65,7 +65,7 @@ public class AttackSpinState implements BossState {
 		}
 	}
 
-	public Boolean getHasAttacked() {
+	public Boolean isHasAttacked() {
 		return hasAttacked;
 	}
 	
