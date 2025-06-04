@@ -9,10 +9,9 @@ import id.ac.binus.solution.core.states.boss.ExitableState;
 import id.ac.binus.solution.core.states.boss.SpawnLevitateState;
 import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.animations.IAnimation;
-import id.ac.binus.solution.core.interfaces.FXStartBehaviour;
-import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
+import id.ac.binus.solution.core.interfaces.FXBehaviour;
 
-public class EnemyManager implements CharacterContext, FXStartBehaviour, FXUpdateBehaviour {
+public class EnemyManager implements CharacterContext, FXBehaviour {
 	private Enemy enemy;
 	private EnemyMovementManager movementManager;
 	private EnemyAnimationManager animationManager;

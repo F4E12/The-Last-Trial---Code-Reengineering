@@ -18,20 +18,20 @@ import javafx.scene.input.KeyCode;
 
 /*
 	Smell Code	: Speculative Generality
-	Reason		: Start method from FXBehaviour is not implemented here
-	Treatment	: Create a separate interface for FXBehavoiur
+	Reason		: Start method from FXBehaviour is not implemented
+	Solution    : Create a separate interface for FXBehavoiur
 
 	Smell Code  : Comments
-	Reason		: There is some comments in this code
-	Treatment	: Remove comments
+	Reason		: There are some comments in this code
+	Solution    : Remove comments
 
 	Smell Code 	: Long Parameter List
-	Reason		: Too many parameter in a method
-	Treatement	: Replace parameterÂ withÂ object
+	Reason		: Too many parameters in a method
+	Solution    : Replace parameter with object
 
 	Smell Code	: Large Class
-	Reason		: This class have to many responsibility
-	Treatment	: Extract class
+	Reason		: This class has too many responsibilities
+	Solution    : Extract class
 */
 
 public class PlayerManager implements CharacterContext, FXBehaviour {
@@ -76,9 +76,7 @@ public class PlayerManager implements CharacterContext, FXBehaviour {
 	}
 
 	private void handleStamina() {
-
 		player.updateStamina(5);
-
 	}
 
 	private void handleHealth() {
@@ -139,7 +137,6 @@ public class PlayerManager implements CharacterContext, FXBehaviour {
 
 	private void handleAnimation() {
 		animationController.update(System.currentTimeMillis());
-
 		if (player.hasState(PlayerStateEnum.ATTACKING)) {
 			if (stateCache != PlayerStateEnum.ATTACKING) {
 				stateCache = PlayerStateEnum.ATTACKING;
@@ -147,7 +144,6 @@ public class PlayerManager implements CharacterContext, FXBehaviour {
 			}
 			return;
 		}
-
 		int currentState = player.getState();
 		if (currentState != stateCache) {
 			stateCache = currentState;

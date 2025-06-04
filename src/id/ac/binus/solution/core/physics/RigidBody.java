@@ -4,7 +4,7 @@ import id.ac.binus.solution.core.models.Vector2D;
 
 public class RigidBody {
 
-  private id.ac.binus.solution.core.models.Vector2D velocity;
+  private Vector2D velocity;
   private Vector2D delta;
   private final Vector2D terminalVelocity;
   private final PhysicsEngine physics;

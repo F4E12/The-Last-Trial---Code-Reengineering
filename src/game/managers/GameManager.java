@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
- * Smell Code	: Duplicate code
- * Reason		: Repetitive calls to addAudio with similar structure and hardcoded values.
- * Treatment	: Extract method, by refactor by using a loop or extracting repeated logic into a helper method.
+ * Smell Code : Duplicate code
+ * Reason	  : Repetitive calls to addAudio with similar structure and hardcoded values.
+ * Solution   : Extract method by using a loop or extracting repeated logic into a helper method.
  */
 
 public class GameManager {

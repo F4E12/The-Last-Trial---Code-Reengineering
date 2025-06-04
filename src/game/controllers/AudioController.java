@@ -11,7 +11,7 @@ import javafx.scene.media.MediaPlayer;
 /*
  * Smell Code : Primitive Obsession 
  * Reason     : Using integer to store audio state
- * Treatment : Extract variable to enum
+ * Treatment  : Extract variable to enum
  */
 
 public class AudioController {

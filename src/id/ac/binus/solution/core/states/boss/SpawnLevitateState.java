@@ -6,18 +6,6 @@ import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 import id.ac.binus.solution.managers.EnemyManager;
 
-/*
- * Smell Code : Dead Code
- * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
- */
-
-/*
- * Smell Code : Long Method
- * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
- * Smell      : Extract Method
- */
-
 public class SpawnLevitateState implements BossState, ExitableState {
 
 	private void initCharacter(CharacterContext context) {

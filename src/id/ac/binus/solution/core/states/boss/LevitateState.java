@@ -5,24 +5,6 @@ import id.ac.binus.solution.core.constants.Vector;
 import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
-/*
- * Smell Code : Dead Code
- * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
- */
-
-/*
- * Smell Code : Long Method
- * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
- * Smell      : Extract Method
- */
-
-/*
- * Smell Code : Switch Statement
- * Reason     : Developer memakai terlalu banyak if-statements
- * Smell      : Move Method
- */
-
 public class LevitateState implements BossState {
 	
 	private void initCharacter(CharacterContext context) {		

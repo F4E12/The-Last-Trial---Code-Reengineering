@@ -4,12 +4,6 @@ import id.ac.binus.solution.core.constants.BossStateEnum;
 import id.ac.binus.solution.controllers.Direction;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
-/*
- * Smell Code : Dead Code
- * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
- */
-
 public class AttackPreDashState implements BossState{
 
   private void initCharacter(CharacterContext context) {

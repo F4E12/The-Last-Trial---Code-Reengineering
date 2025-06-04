@@ -1,10 +1,11 @@
 package game.core.states.boss;
 
 import game.core.interfaces.CharacterContext;
+
 /*
  * Smell Code : Dead Code
  * Reason     : Method exit tidak pernah dipakai dimanapun
- * Smell      : Delete Dead Code
+ * Solution   : Delete Dead Code
  */
 
 public interface BossState {

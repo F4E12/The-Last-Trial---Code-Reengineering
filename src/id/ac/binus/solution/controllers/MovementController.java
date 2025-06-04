@@ -6,12 +6,6 @@ import id.ac.binus.solution.core.physics.RigidBody;
 import id.ac.binus.solution.managers.Input;
 import javafx.scene.input.KeyCode;
 
-/*
- * Smell Code : Primitive Obsession
- * Reason     : Using integer to store direction
- * Treatment  : Extract variable to enum
- */
-
 public class MovementController extends RigidBodyController {
     private static final int DEFAULT_ACCELERATION = 5;
     private static final double DEFAULT_JUMP_STRENGTH = 40.0;

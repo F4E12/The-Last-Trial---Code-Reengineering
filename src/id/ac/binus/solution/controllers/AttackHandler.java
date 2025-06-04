@@ -6,24 +6,6 @@ import id.ac.binus.solution.camera.PaneObserver;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 import id.ac.binus.solution.managers.GameManager;
 
-/*
- * Smell Code : Long Method
- * Reason     : The method contains a lot of logic for attacking
- * Treatment  : Extract Method
- */
-
-/*
- * Smell Code : Primitive Obsession
- * Reason     : Target id (player or enemy) is hard-coded as an integer
- * Treatment  : Make a constant variable
- */
-
-/*
- * Smell Code : Duplicate Code
- * Reason     : The code getting the X dan Y coordinates is duplicated
- * Treatment  : Extract Method
- */
-
 public class AttackHandler {
     private static final int PLAYER_ID = 0;
 	private static final int ENEMY_ID = 1;

@@ -8,13 +8,19 @@ import game.core.interfaces.CharacterContext;
 /*
  * Smell Code : Dead Code
  * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
+ * Solution   : Delete Dead Code
  */
 
 /*
  * Smell Code : Long Method
  * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
- * Smell      : Extract Method
+ * Solution   : Extract Method
+ */
+
+/*
+ * Smell Code : Data Class
+ * Reason     : Atribut sudah diencapsulate tapi belum ada getter
+ * Solution   : Getter 
  */
 
 public class SplitSwordState implements BossState{

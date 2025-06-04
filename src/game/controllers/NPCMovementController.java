@@ -4,6 +4,18 @@ import game.core.constants.Vector;
 import game.core.models.Vector2D;
 import game.core.physics.RigidBody;
 
+/*
+ * Smell Code : Primitive Obsession
+ * Reason     : Using integer to store direction
+ * Treatment  : Extract variable to enum
+ */
+
+/*
+ * Smell Code : Comment
+ * Reason     : Existed comment in void update to explain the method
+ * Treatment  : Remove comment
+ */
+
 public class NPCMovementController extends RigidBodyController {
   private int direction;
 

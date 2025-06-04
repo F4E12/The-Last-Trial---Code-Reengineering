@@ -16,13 +16,15 @@ import game.core.states.boss.BossState;
 import game.core.states.boss.SpawnLevitateState;
 
 /*
- 	Smell Code 	: Long Parameter List
-	Reason		: Too many parameter in a method
-	Treatement	: Replace parameterÂ withÂ object
+ 	Smell Code : Long Parameter List
+	Reason	   : Too many parameters in a method
+	Solution   : Replace parameter with object
+*/
 
-	Smell Code	: Large Class
-	Reason		: This class have to many responsibility (animation, audio, bos state)
-	Treatment	: Extract class (split into many class)
+/*
+	Smell Code : Large Class
+	Reason	   : This class has too many responsibilities (animation, audio, boss state)
+	Solution   : Extract class (split into many classes)
  */
 
 public class EnemyManager implements CharacterContext, FXBehaviour {

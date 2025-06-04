@@ -14,9 +14,9 @@ import id.ac.binus.solution.core.states.boss.BossState;
 import id.ac.binus.solution.core.animations.AnimationConfig;
 import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
-import id.ac.binus.solution.core.interfaces.FXUpdateBehaviour;
+import id.ac.binus.solution.core.interfaces.FXBehaviour;
 
-public class PlayerManager implements CharacterContext, FXUpdateBehaviour {
+public class PlayerManager implements CharacterContext, FXBehaviour {
 	private final Player player;
     private final MovementController movementController;
     private final PlayerInputManager inputHandler;

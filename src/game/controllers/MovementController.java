@@ -15,10 +15,9 @@ import javafx.scene.input.KeyCode;
 
 public class MovementController extends RigidBodyController {
   private final int acceleration;
-	private final double jumpStrength;
-	private Input input;
+  private final double jumpStrength;
+  private Input input;
   private int direction;
-
 
   public MovementController(RigidBody rb) {
     super(rb);
@@ -27,7 +26,6 @@ public class MovementController extends RigidBodyController {
     this.jumpStrength = 40;
     this.input = Input.getInstance();
     this.direction = Vector.LEFT;
-
   }
  
   @Override
@@ -44,7 +42,6 @@ public class MovementController extends RigidBodyController {
     if (input.getKey(KeyCode.W) && pos.getY() >= PhysicsEngine.getGroundBoundary()) {
         rb.getVelocity().setY(-jumpStrength);
     }
-
     rb.update(pos);
   }
   
@@ -62,6 +59,4 @@ public class MovementController extends RigidBodyController {
   public int getDirection() {
     return this.direction;
   }
-
-
 }

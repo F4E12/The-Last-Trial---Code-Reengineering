@@ -8,19 +8,19 @@ import javafx.scene.text.Font;
 /*
  * Smell Code : Dead Code / Speculative Generality
  * Reason     : The constructor public UIFactory() is defined but unused and empty
- * Treatment  : Remove method
+ * Solution   : Remove method
  */
 
 /*
  * Smell Code : Duplicate Code
  * Reason     : The code for creating buttons and labels repeats the same setup
- * Treatment  : Extract Method
+ * Solution   : Extract Method
  */
 
 /*
  * Smell Code : Primitive Obsession
  * Reason     : The font path is repeated and hard-coded as a string
- * Treatment  : Make a constant variable
+ * Solution   : Make a constant variable
  */
 
 public class UIFactory {

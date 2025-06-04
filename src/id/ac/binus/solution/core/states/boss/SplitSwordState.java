@@ -5,24 +5,6 @@ import java.util.Random;
 import id.ac.binus.solution.core.constants.BossStateEnum;
 import id.ac.binus.solution.core.interfaces.CharacterContext;
 
-/*
- * Smell Code : Dead Code
- * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
- */
-
-/*
- * Smell Code : Long Method
- * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
- * Smell      : Extract Method
- */
-
-/*
- * Smell Code : Data Class
- * Reason     : Atribut sudah diencapsulate tapi belum ada getter
- * Smell      : Getter 
- */
-
 public class SplitSwordState implements BossState{
 
   private Integer shouldSpinAttack;

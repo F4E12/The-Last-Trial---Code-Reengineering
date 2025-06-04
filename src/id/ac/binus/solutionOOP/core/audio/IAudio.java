@@ -1,0 +1,6 @@
+package id.ac.binus.solutionOOP.core.audio;
+
+public interface IAudio {
+	public void play();
+	public void stop();
+}

@@ -7,13 +7,13 @@ import game.core.interfaces.CharacterContext;
 /*
  * Smell Code : Dead Code
  * Reason     : Method exit dari interface BossState tidak pernah dipakai
- * Smell      : Delete Dead Code
+ * Solution   : Delete Dead Code
  */
 
 /*
  * Smell Code : Long Method
  * Reason     : Sebuah method memiliki terlalu banyak tanggung jawab
- * Smell      : Extract Method
+ * Solution   : Extract Method
  */
 
 public class SpawnLevitateState implements BossState {

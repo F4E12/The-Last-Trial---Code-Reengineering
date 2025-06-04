@@ -7,14 +7,12 @@ public class PhysicsEngine {
     private static final Vector2D rightBoundary = new Vector2D(1340, 0);
     private final double friction;
     private final double gravity;
-    private final double marginError;
 
     private static PhysicsEngine instance;
 
     private PhysicsEngine() {
         this.friction = 1.5;
         this.gravity = 2;
-        this.marginError = 0.5;
     }
 
     public static PhysicsEngine getInstance() {

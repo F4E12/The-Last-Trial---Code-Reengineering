@@ -10,7 +10,7 @@ import game.core.physics.RigidBody;
 
 /*
  * Smell Code : Speculative Generality 
- * Reason     : Enemy class is a subclass of Character, but it doesn't implement any methods that are declared in Character.
+ * Reason     : Player class is a subclass of Character, but it doesn't implement any methods that are declared in Character.
  * Treatment  : Remove method
  */
 

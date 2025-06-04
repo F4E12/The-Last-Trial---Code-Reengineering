@@ -3,18 +3,6 @@ package id.ac.binus.solution.controllers;
 import id.ac.binus.solution.core.models.Vector2D;
 import id.ac.binus.solution.core.physics.RigidBody;
 
-/*
- * Smell Code : Primitive Obsession
- * Reason     : Using integer to store direction
- * Treatment  : Extract variable to enum
- */
-
-/*
- * Smell Code : Comment
- * Reason     : Existed comment in void update to explain the method
- * Treatment  : Remove comment
- */
-
 public class NPCMovementController extends RigidBodyController {
   private Direction direction;
 
