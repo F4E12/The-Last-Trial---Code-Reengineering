@@ -42,6 +42,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	/*
+	 * test
+	 */
 	private final boolean DOOM_MODE = true;
 
 	// Canvas and GraphicsContext setup
