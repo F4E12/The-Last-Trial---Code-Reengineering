@@ -2,3 +2,10 @@
 /GameManager.class
 /Input.class
 /PlayerManager.class
+/EnemyAnimationManager.class
+/EnemyAudioManager.class
+/EnemyMovementManager.class
+/PlayerAnimationManager.class
+/PlayerAudioManager.class
+/PlayerCombatManager.class
+/PlayerInputManager.class

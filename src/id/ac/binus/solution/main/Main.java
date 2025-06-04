@@ -41,20 +41,30 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+/*
+ * Smell Code	: Large Class
+ * Reason		: This class have to many responsibility
+ * Treatment	: Extract Class
+ * 
+ * Smell Code	: Comments
+ * Reason		: There is comments in this file
+ * Treatment	: Remove comments
+ * 
+ * Smell Code 	: Dead code
+ * Reason		: There is part of code that not beeing used (deprecated)
+ * Treatment	: Remove the code
+ */
+
+
 public class Main extends Application {
-	/*
-	 * test
-	 */
 	private final boolean DOOM_MODE = true;
 
-	// Canvas and GraphicsContext setup
 	private final Canvas playerCanvas = new Canvas(1800, 900);
 	private final GraphicsContext playerGC = playerCanvas.getGraphicsContext2D();
 
 	private final Canvas enemyCanvas = new Canvas(1800, 900);
 	private final GraphicsContext enemyGC = enemyCanvas.getGraphicsContext2D();
 
-	// Window and scene management
 	private Stage window;
 	private Scene mainMenu;
 	private StackPane root = new StackPane();
@@ -78,18 +88,15 @@ public class Main extends Application {
 
 	private Input input = Input.getInstance();
 
-	// Background pane setup
 	private StackPane bgPane = new StackPane();
 
-	// MediaView setup (for video backgrounds)
 	private MediaView mediaView;
 	MediaPlayer mediaPlayer;
 
 	Image bloodImage = new Image("/assets/sprite/ui/BloodOverlay.png");
 	ImageView overlayView = new ImageView(bloodImage);
 
-	private String bgMusicPath = "/assets/audio/song/tokyobluesloop.mp3"; // Replace with your file path
-//	private String bgMusicPath = "../assets/audio/song/doom.mp3"; // Replace with your file path
+	private String bgMusicPath = "/assets/audio/song/tokyobluesloop.mp3";
 
 	private Media bgMusicMedia = new Media(getClass().getResource(bgMusicPath).toExternalForm());
 	private MediaPlayer backgroundMusic = new MediaPlayer(bgMusicMedia);
@@ -110,16 +117,6 @@ public class Main extends Application {
 		setMainMenu();
 		window.setFullScreen(true);
 		window.show();
-	}
-
-	@Deprecated
-	private void drawGuideLine(Canvas c, GraphicsContext gc, double y) {
-		gc.setStroke(Color.RED); // Set the color of the line
-		gc.setLineWidth(2); // Set the width of the line
-		// Draw a vertical line from top to bottom
-		double xPosition = 100; // Change this to your desired X position
-		gc.strokeLine(xPosition, 0, xPosition, c.getHeight());
-		; // Draw a line from the left to the right
 	}
 
 	private void setMainMenu() {
@@ -149,7 +146,6 @@ public class Main extends Application {
 	}
 
 	private void setGameScene() {
-		// Set up media player with the video file
 		String bgPath = "src/assets/sprite/scene/battleBG.mp4";
 		String enemyHealthBarPath = "/assets/sprite/ui/boss_healthbar.png";
 
@@ -188,7 +184,6 @@ public class Main extends Application {
 		double barWidth = playerBarImgView.getFitWidth();
 		double barHeight = 24;
 
-		// Create the health bar shapes
 		playerHealthBar = new Rectangle(barWidth, barHeight, Color.GREENYELLOW);
 		playerStaminaBar = new Rectangle(barWidth, barHeight, Color.DARKCYAN);
 
@@ -218,7 +213,6 @@ public class Main extends Application {
 
 		backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
 
-		// Set the size of the MediaView
 		mediaView.setFitWidth(gameScene.getWidth());
 		mediaView.setFitHeight(gameScene.getHeight());
 		mediaView.setPreserveRatio(true);
@@ -232,7 +226,6 @@ public class Main extends Application {
 			mediaPlayer.play();
 		});
 
-		// Translucent black overlay
 		Rectangle darkOverlay = new Rectangle(gameScene.getWidth(), gameScene.getHeight(), Color.BLACK);
 		darkOverlay.setOpacity(0.3);
 
@@ -321,9 +314,6 @@ public class Main extends Application {
 
 		gc.drawImage(animation.getSpriteImage(), startX, startY, adjustedWidth, deltaY, pos.getX(),
 				pos.getY() - deltaY * 4, deltaX * 4, deltaY * 4);
-
-//	    gc.setFill(Color.RED);
-//	    gc.fillRect(pos.getX()+deltaX, pos.getY(), deltaX*3, 5);
 	}
 
 	private void parallax() {

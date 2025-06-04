@@ -2,3 +2,5 @@
 /Enemy.class
 /Player.class
 /Vector2D.class
+/CharacterAttributes.class
+/Hitbox.class
