@@ -41,7 +41,5 @@ public class UIFactory {
 	}
 
 	public UIFactory() {
-		// TODO Auto-generated constructor stub
 	}
-
 }
