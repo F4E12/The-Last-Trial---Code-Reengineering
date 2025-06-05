@@ -1,9 +1,10 @@
-package id.ac.binus.solutionOOP.ui;
+package id.ac.binus.solutionOOP.managers;
 
 import id.ac.binus.solutionOOP.config.Config;
 import id.ac.binus.solutionOOP.core.models.Enemy;
 import id.ac.binus.solutionOOP.core.models.Player;
 import id.ac.binus.solutionOOP.game.UIFactory;
+import id.ac.binus.solutionOOP.main.HealthBar;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

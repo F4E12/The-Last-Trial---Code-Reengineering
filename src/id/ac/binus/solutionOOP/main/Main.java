@@ -13,7 +13,9 @@ import id.ac.binus.solutionOOP.managers.PlayerManager;
 import id.ac.binus.solutionOOP.managers.MediaManager;
 import id.ac.binus.solutionOOP.config.DefaultRenderer;
 import id.ac.binus.solutionOOP.config.Renderer;
+import id.ac.binus.solutionOOP.controllers.Direction;
 import id.ac.binus.solutionOOP.managers.UIManager;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -35,11 +37,12 @@ public class Main extends Application {
     private final StackPane camera = new StackPane();
     private final Scene gameScene = new Scene(root, Config.CANVAS_WIDTH, Config.CANVAS_HEIGHT);
     private final ImageView overlayView = new ImageView(new Image(Config.BLOOD_OVERLAY_IMAGE));
-    private final Player player = new Player(Config.PLAYER_MAX_HEALTH, new Vector2D(640, 600), PlayerStateEnum.IDLE, 4);
+    private final Player player = new Player(1000, new Vector2D(640, 600), PlayerStateEnum.IDLE, 4);
     private final PlayerManager playerManager = new PlayerManager(player);
-    private final Enemy enemy = new Enemy(Config.ENEMY_MAX_HEALTH, new Vector2D(640, 600), 4);
+    private final Enemy enemy = new Enemy(1000, new Vector2D(640, 600), 4);
     private final EnemyManager enemyManager = new EnemyManager(enemy);
     private final Input input = Input.getInstance();
+    private UIManager uiManager;
     private Stage stage;
 
     @Override

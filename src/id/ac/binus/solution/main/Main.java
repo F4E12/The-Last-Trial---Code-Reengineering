@@ -2,17 +2,8 @@ package id.ac.binus.solution.main;
 
 import java.io.File;
 
-import id.ac.binus.solution.camera.PaneObserver;
-import id.ac.binus.solution.controllers.Direction;
-import id.ac.binus.solution.core.animations.IAnimation;
-import id.ac.binus.solution.core.constants.PlayerStateEnum;
-import id.ac.binus.solution.core.models.Enemy;
 import id.ac.binus.solution.core.models.Player;
 import id.ac.binus.solution.core.models.Vector2D;
-import id.ac.binus.solution.game.UIFactory;
-import id.ac.binus.solution.managers.EnemyManager;
-import id.ac.binus.solution.managers.GameManager;
-import id.ac.binus.solution.managers.Input;
 import id.ac.binus.solution.managers.PlayerManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
