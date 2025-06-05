@@ -16,6 +16,12 @@ import id.ac.binus.solution.core.animations.CharacterAnimation;
 import id.ac.binus.solution.core.animations.IAnimation;
 import id.ac.binus.solution.core.interfaces.FXBehaviour;
 
+/*
+ * Smell Code : Dead Code
+ * Reason     : Ada code yang tidak dipakai
+ * Solution   : Delete Dead Code
+ */
+
 public class PlayerManager implements CharacterContext, FXBehaviour {
 	private final Player player;
     private final MovementController movementController;
