@@ -2,6 +2,12 @@ package id.ac.binus.solution.core.physics;
 
 import id.ac.binus.solution.core.models.Vector2D;
 
+/*
+ * Smell Code: Deficient Encapsulation
+ * Reason: Terdapat constructor dan setter pada class ini.
+ * Solution: Pilih salah satu (disini kita pilih untuk menghapus setter).
+ */
+
 public class RigidBody {
 
   private Vector2D velocity;

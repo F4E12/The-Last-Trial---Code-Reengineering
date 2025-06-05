@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /*
- * Smell Code : Dead Code / Speculative Generality
+ * Smell Code : Dead Code/Speculative Generality
  * Reason     : The constructor public UIFactory() is defined but unused and empty
  * Solution   : Remove method
  */

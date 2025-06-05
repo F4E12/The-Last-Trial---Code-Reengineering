@@ -3,6 +3,12 @@ package id.ac.binus.solution.core.animations;
 import java.io.File;
 import javafx.scene.image.Image;
 
+/*
+ * Smell Code: Broken Modularization
+ * Reason: Pemisahan data dalam class terpisah.
+ * Solution: Memindahkan data ke kelas asalnya.
+ */
+
 public class AnimationConfig {
     public final String spritePath;
     private final Image spriteImage;

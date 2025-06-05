@@ -2,6 +2,12 @@ package id.ac.binus.solution.core.animations;
 
 import javafx.scene.image.Image;
 
+/*
+ * Smell Code: Broken Modularization
+ * Reason: Pemisahan data dalam class terpisah.
+ * Solution: Memindahkan data ke kelas asalnya.
+ */
+
 public class CharacterAnimation implements IAnimation {
   private final AnimationConfig animationConfig;
   private final int cropWidth;

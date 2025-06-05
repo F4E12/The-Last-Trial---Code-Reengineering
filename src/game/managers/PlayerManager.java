@@ -32,6 +32,10 @@ import javafx.scene.input.KeyCode;
 	Smell Code	: Large Class
 	Reason		: This class has too many responsibilities
 	Solution    : Extract class
+	
+	Smell Code : Dead Code
+	Reason     : There is unused code
+	Solution   : Delete Dead Code
 */
 
 public class PlayerManager implements CharacterContext, FXBehaviour {

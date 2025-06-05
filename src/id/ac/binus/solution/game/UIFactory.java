@@ -40,8 +40,4 @@ public class UIFactory {
 		return menuButton;
 	}
 
-	public UIFactory() {
-		// TODO Auto-generated constructor stub
-	}
-
 }

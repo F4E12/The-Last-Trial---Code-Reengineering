@@ -41,21 +41,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-/*
- * Smell Code	: Large Class
- * Reason		: This class have to many responsibility
- * Treatment	: Extract Class
- * 
- * Smell Code	: Comments
- * Reason		: There is comments in this file
- * Treatment	: Remove comments
- * 
- * Smell Code 	: Dead code
- * Reason		: There is part of code that not beeing used (deprecated)
- * Treatment	: Remove the code
- */
-
-
 public class Main extends Application {
 	private final boolean DOOM_MODE = true;
 
