@@ -31,10 +31,6 @@ public class RigidBody {
     return velocity;
   }
 
-  public void setVelocity(Vector2D velocity) {
-    this.velocity = velocity;
-  }
-
   public Vector2D getDelta() {
     return delta;
   }
